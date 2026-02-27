@@ -203,7 +203,7 @@
         window.addEventListener('resize', resizeCanvas);
 
         function initGame() {
-            snake = [{ x: 10, y: 10 }];
+            snake = [{ x: 10 * gridSize, y: 10 * gridSize }];
             dx = gridSize;
             dy = 0;
             score = 0;

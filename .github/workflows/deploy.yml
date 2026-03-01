@@ -1,0 +1,23 @@
+name: Deploy to EdgeOne Pages
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Deploy to EdgeOne Pages
+      uses: tencentcloud/edgeone-pages-deploy-action@v1
+      with:
+        secret-id: ${{ secrets.TENCENT_SECRET_ID }}
+        secret-key: ${{ secrets.TENCENT_SECRET_KEY }}
+        # 如果是静态站点，不需要构建
+        build-command: ''
+        output-directory: '.'
